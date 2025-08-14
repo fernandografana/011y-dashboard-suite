@@ -1,0 +1,1147 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_GRAFANACLOUD-DEMOINFRA-PROM",
+      "label": "grafanacloud-demoinfra-prom",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    },
+    {
+      "name": "DS_INFINITY-DEFAULT",
+      "label": "Infinity-Default",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "yesoreyeram-infinity-datasource",
+      "pluginName": "Infinity"
+    },
+    {
+      "name": "DS_GRAFANACLOUD-DEMOINFRA-TRACES",
+      "label": "grafanacloud-demoinfra-traces",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "tempo",
+      "pluginName": "Tempo"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "12.1.0-90058"
+    },
+    {
+      "type": "panel",
+      "id": "nodeGraph",
+      "name": "Node Graph",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "tempo",
+      "name": "Tempo",
+      "version": "12.1.0-pre"
+    },
+    {
+      "type": "panel",
+      "id": "text",
+      "name": "Text",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "yesoreyeram-infinity-datasource",
+      "name": "Infinity",
+      "version": "3.3.0"
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [
+    {
+      "asDropdown": true,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": true,
+      "tags": [
+        "obsessions"
+      ],
+      "targetBlank": false,
+      "title": "Jump To",
+      "tooltip": "",
+      "type": "dashboards",
+      "url": ""
+    }
+  ],
+  "panels": [
+    {
+      "description": "",
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 21,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<!-- Top Left Branding -->\n<table style=\"border: none;width:100%;\">\n  <tr>\n    <!-- Logos --> \n    <td style=\"border: none;padding-top:0px\"><div style='width: 140px;'><img src='https://raw.githubusercontent.com/pix3lrich/grafana-image-repo/b6d9ced907fbdc4d6aecf6c5ef3f1c77750f4550/logos/richbank-logo-green.svg'height=\"50\"></td>\n    <!-- Dynamic Horizontal Line -->\n    <td style=\"border: none;padding-top:0px;width:100%;\"><hr></td></td>\n  </tr>\n</table>\n<!-- Everything Else -->\n<table style=\"border: none;width: 100%;\">\n  <tr>\n    <!-- Dashboard Title / App Name -->\n    <td style=\"border: none;padding-top:0px\"><p style=\"font-size:26px\">Service Graph</b><span style=\"font-size:18px\">&nbsp;&nbsp;|&nbsp;&nbsp;${service_name}&nbsp;(${service_namespace})\n    <br></td>\n  </tr>\n  <tr>\n    <!-- Dashboard Sub-Navigation -->\n    <td style=\"border: none;padding-top:0px\">\n      <nav style=\"font-size:14px;text-align:left;\">\n          <a href=#>Databases</a>&nbsp;&nbsp;|&nbsp;\n          <a href=\"https://richgeorge.grafana.net/d/cefgd4x4bolxcb?&var-service_name=${service_name}&var-service_namespace=${service_namespace}&var-env=${env}&var-quant=${quant}\">Endpoints</a>&nbsp;&nbsp;|&nbsp;\n          <a href=\"https://richgeorge.grafana.net/d/feg4k47ix6pkwb?&var-service_name=${service_name}&var-service_namespace=${service_namespace}&var-env=${env}&var-quant=${quant}\">Golden Signals</a>&nbsp;&nbsp;|&nbsp;\n          <a href=#>HTTP</a>&nbsp;&nbsp;|&nbsp;\n          <a href=#>JVM</a>&nbsp;&nbsp;|&nbsp;\n          <a href=#>RPC</a>&nbsp;&nbsp;|&nbsp;\n          Service Graph\n        </nav>\n    </td>\n    <!-- Dashboard Main-Navigation -->\n    <td style=\"border: none;padding-top:0px;text-align: right;\"><p style=\"text-align:right;\">\n        <!-- Home -->\n        <a href=\"https://richgeorge.grafana.net/d/eefxjyho1w4jkb\"><img src=https://raw.githubusercontent.com/pix3lrich/grafana-image-repo/31477e5f214a12e4c052751a6b49d22ef01ae91c/navigation/navbutton-home-inactive-v2.svg style=\"height:29px;\"></a>\n        <!-- SLOs -->\n        <a href=#><img src=https://raw.githubusercontent.com/pix3lrich/grafana-image-repo/31477e5f214a12e4c052751a6b49d22ef01ae91c/navigation/navbutton-slos-inactive-v2.svg style=\"height:29px;\"></a>\n        <!-- Apps -->\n        <a href=\"https://richgeorge.grafana.net/d/beffsrurmj4lcd\"><img src=https://raw.githubusercontent.com/pix3lrich/grafana-image-repo/31477e5f214a12e4c052751a6b49d22ef01ae91c/navigation/navbutton-apps-active-v2.svg style=\"height:29px;\"></a>\n        <!-- RUM -->\n        <a href=#><img src=https://raw.githubusercontent.com/pix3lrich/grafana-image-repo/31477e5f214a12e4c052751a6b49d22ef01ae91c/navigation/navbutton-infra-inactive-v2.svg style=\"height:29px;\"></a>\n        <!-- Infra -->\n        <a href=#><img src=https://raw.githubusercontent.com/pix3lrich/grafana-image-repo/31477e5f214a12e4c052751a6b49d22ef01ae91c/navigation/navbutton-tools-inactive-v2.svg style=\"height:29px;\"></a>\n        <!-- Tools -->\n        <a href=#><img src=https://raw.githubusercontent.com/pix3lrich/grafana-image-repo/31477e5f214a12e4c052751a6b49d22ef01ae91c/navigation/navbutton-misc-inactive-v2.svg style=\"height:29px;\"></a>\n        <!-- Misc -->\n        <a href=#><img src=https://raw.githubusercontent.com/pix3lrich/grafana-image-repo/31477e5f214a12e4c052751a6b49d22ef01ae91c/navigation/navbutton-help-v2.svg style=\"height:29px;\"></a>\n    </td>\n  </tr>\n</table>\n<hr>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.1.0-90058",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": true,
+            "inspect": false
+          },
+          "links": [],
+          "mappings": [],
+          "noValue": "-",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Duration, p95"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "unit",
+                "value": "s"
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "gradientMode": "none",
+                  "hideValue": false,
+                  "type": "sparkline"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Rate"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "unit",
+                "value": "reqps"
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "gradientMode": "none",
+                  "hideValue": false,
+                  "type": "sparkline"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Errors"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "unit",
+                "value": "percentunit"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "gradientMode": "none",
+                  "hideValue": false,
+                  "type": "sparkline"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "App"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "catalog": {
+                        "index": 0,
+                        "text": "AuthService"
+                      },
+                      "copy": {
+                        "index": 1,
+                        "text": "SessionManager"
+                      },
+                      "frontend": {
+                        "index": 2,
+                        "text": "TokenGenerator"
+                      },
+                      "recommendations": {
+                        "index": 3,
+                        "text": "TokenVerify"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Status"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "crit": {
+                        "index": 2,
+                        "text": "https://raw.githubusercontent.com/pix3lrich/grafana-image-repo/07838b7f90ae1add38e78d5c0e6a6460f482fe8e/status/critical-icon.svg"
+                      },
+                      "na": {
+                        "index": 3,
+                        "text": "https://raw.githubusercontent.com/pix3lrich/grafana-image-repo/07838b7f90ae1add38e78d5c0e6a6460f482fe8e/status/na-icon.svg"
+                      },
+                      "ok": {
+                        "index": 0,
+                        "text": "https://raw.githubusercontent.com/pix3lrich/grafana-image-repo/07838b7f90ae1add38e78d5c0e6a6460f482fe8e/status/ok-icon.svg"
+                      },
+                      "warn": {
+                        "index": 1,
+                        "text": "https://raw.githubusercontent.com/pix3lrich/grafana-image-repo/07838b7f90ae1add38e78d5c0e6a6460f482fe8e/status/warning-icon.svg"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "image"
+                }
+              },
+              {
+                "id": "custom.width",
+                "value": 94
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Status"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "Drilldown",
+                    "url": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Service"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 107
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 6
+      },
+      "id": 23,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 0,
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "12.1.0-90058",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "histogram_quantile(0.95, sum(rate(traces_spanmetrics_latency_bucket{span_kind=~\"SPAN_KIND_SERVER|SPAN_KIND_CONSUMER\"} [$__rate_interval])) by (job, le))",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "Duration"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GRAFANACLOUD-DEMOINFRA-PROM}"
+          },
+          "editorMode": "code",
+          "expr": "(sum(rate(traces_spanmetrics_latency_count{span_kind=~\"SPAN_KIND_SERVER|SPAN_KIND_CONSUMER\", source=~\".*\", status_code=\"STATUS_CODE_ERROR\"} [$__rate_interval])) by (job) OR sum(rate(traces_spanmetrics_latency_count{span_kind=~\"SPAN_KIND_SERVER|SPAN_KIND_CONSUMER\", source=~\".*\"} [$__rate_interval])) by (job) * 0) / sum(rate(traces_spanmetrics_latency_count{span_kind=~\"SPAN_KIND_SERVER|SPAN_KIND_CONSUMER\", source=~\".*\"} [$__rate_interval])) by (job)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "Errors"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum(rate(traces_spanmetrics_latency_count{span_kind=~\"SPAN_KIND_SERVER|SPAN_KIND_CONSUMER\"} [$__rate_interval])) by (job)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "Rate"
+        },
+        {
+          "columns": [],
+          "data": "job,status, service_namespace\ncatalog,ok,Login\ncopy,ok,Login\nfrontend,warn,Login\nrecommendations,ok,Login",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DS_INFINITY-DEFAULT}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "hide": false,
+          "parser": "backend",
+          "refId": "Status",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "uql": "parse-csv",
+          "url": "https://github.com/grafana/grafana-infinity-datasource/blob/main/testdata/users.json",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Downstream (TokenGenerator)",
+      "transformations": [
+        {
+          "id": "timeSeriesTable",
+          "options": {}
+        },
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              " service_namespace": 1,
+              "Trend #Duration": 5,
+              "Trend #Errors": 4,
+              "Trend #Rate": 3,
+              "job": 0,
+              "status": 2
+            },
+            "renameByName": {
+              " service_namespace": "Service",
+              "Budjet Budget": "Error Budget",
+              "Current SLI SLI": "SLI",
+              "Objective Objective": "Objective",
+              "SLO SLO": "SLO",
+              "Trend #Duration": "Duration, p95",
+              "Trend #Errors": "Errors",
+              "Trend #Rate": "Rate",
+              "job": "App",
+              "status": "Status",
+              "status A": "Status",
+              "status Status": "Status"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": true,
+            "inspect": false
+          },
+          "links": [],
+          "mappings": [],
+          "noValue": "-",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Duration, p95"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "unit",
+                "value": "s"
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "gradientMode": "none",
+                  "hideValue": false,
+                  "type": "sparkline"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Rate"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "unit",
+                "value": "reqps"
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "gradientMode": "none",
+                  "hideValue": false,
+                  "type": "sparkline"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Errors"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "unit",
+                "value": "percentunit"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "gradientMode": "none",
+                  "hideValue": false,
+                  "type": "sparkline"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "App"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "catalog": {
+                        "index": 0,
+                        "text": "AuthService"
+                      },
+                      "copy": {
+                        "index": 1,
+                        "text": "SessionManager"
+                      },
+                      "frontend": {
+                        "index": 2,
+                        "text": "TokenGenerator"
+                      },
+                      "recommendations": {
+                        "index": 3,
+                        "text": "TokenVerify"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Status"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "crit": {
+                        "index": 2,
+                        "text": "https://raw.githubusercontent.com/pix3lrich/grafana-image-repo/07838b7f90ae1add38e78d5c0e6a6460f482fe8e/status/critical-icon.svg"
+                      },
+                      "na": {
+                        "index": 3,
+                        "text": "https://raw.githubusercontent.com/pix3lrich/grafana-image-repo/07838b7f90ae1add38e78d5c0e6a6460f482fe8e/status/na-icon.svg"
+                      },
+                      "ok": {
+                        "index": 0,
+                        "text": "https://raw.githubusercontent.com/pix3lrich/grafana-image-repo/07838b7f90ae1add38e78d5c0e6a6460f482fe8e/status/ok-icon.svg"
+                      },
+                      "warn": {
+                        "index": 1,
+                        "text": "https://raw.githubusercontent.com/pix3lrich/grafana-image-repo/07838b7f90ae1add38e78d5c0e6a6460f482fe8e/status/warning-icon.svg"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "image"
+                }
+              },
+              {
+                "id": "custom.width",
+                "value": 94
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Status"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "Drilldown",
+                    "url": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Service"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 107
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 6
+      },
+      "id": 24,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 0,
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "12.1.0-90058",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "histogram_quantile(0.95, sum(rate(traces_spanmetrics_latency_bucket{span_kind=~\"SPAN_KIND_SERVER|SPAN_KIND_CONSUMER\"} [$__rate_interval])) by (job, le))",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "Duration"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GRAFANACLOUD-DEMOINFRA-PROM}"
+          },
+          "editorMode": "code",
+          "expr": "(sum(rate(traces_spanmetrics_latency_count{span_kind=~\"SPAN_KIND_SERVER|SPAN_KIND_CONSUMER\", source=~\".*\", status_code=\"STATUS_CODE_ERROR\"} [$__rate_interval])) by (job) OR sum(rate(traces_spanmetrics_latency_count{span_kind=~\"SPAN_KIND_SERVER|SPAN_KIND_CONSUMER\", source=~\".*\"} [$__rate_interval])) by (job) * 0) / sum(rate(traces_spanmetrics_latency_count{span_kind=~\"SPAN_KIND_SERVER|SPAN_KIND_CONSUMER\", source=~\".*\"} [$__rate_interval])) by (job)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "Errors"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum(rate(traces_spanmetrics_latency_count{span_kind=~\"SPAN_KIND_SERVER|SPAN_KIND_CONSUMER\"} [$__rate_interval])) by (job)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "Rate"
+        },
+        {
+          "columns": [],
+          "data": "job,status, service_namespace\ncatalog,ok,Login\ncopy,ok,Login\nfrontend,warn,Login\nrecommendations,ok,Login",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DS_INFINITY-DEFAULT}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "hide": false,
+          "parser": "backend",
+          "refId": "Status",
+          "root_selector": "",
+          "source": "inline",
+          "type": "csv",
+          "uql": "parse-csv",
+          "url": "https://github.com/grafana/grafana-infinity-datasource/blob/main/testdata/users.json",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Upstream (TokenGenerator)",
+      "transformations": [
+        {
+          "id": "timeSeriesTable",
+          "options": {}
+        },
+        {
+          "disabled": true,
+          "id": "joinByField",
+          "options": {
+            "byField": "job",
+            "mode": "outer"
+          }
+        },
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              " service_namespace": 1,
+              "Trend #Duration": 5,
+              "Trend #Errors": 4,
+              "Trend #Rate": 3,
+              "job": 0,
+              "status": 2
+            },
+            "renameByName": {
+              " service_namespace": "Service",
+              "Budjet Budget": "Error Budget",
+              "Current SLI SLI": "SLI",
+              "Objective Objective": "Objective",
+              "SLO SLO": "SLO",
+              "Trend #Duration": "Duration, p95",
+              "Trend #Errors": "Errors",
+              "Trend #Rate": "Rate",
+              "job": "App",
+              "status": "Status",
+              "status A": "Status",
+              "status Status": "Status"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "tempo",
+        "uid": "${DS_TEMPO}"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 13
+      },
+      "id": 22,
+      "options": {
+        "edges": {},
+        "layoutAlgorithm": "layered",
+        "nodes": {
+          "arcs": []
+        },
+        "zoomMode": "cooperative"
+      },
+      "pluginVersion": "12.1.0-90058",
+      "targets": [
+        {
+          "datasource": {
+            "type": "tempo",
+            "uid": "${DS_GRAFANACLOUD-DEMOINFRA-TRACES}"
+          },
+          "filters": [
+            {
+              "id": "8de6ae50",
+              "operator": "=",
+              "scope": "span"
+            }
+          ],
+          "limit": 20,
+          "queryType": "serviceMap",
+          "refId": "A",
+          "serviceMapQuery": "{}"
+        }
+      ],
+      "title": "Downstream (TokenGenerator)",
+      "type": "nodeGraph"
+    },
+    {
+      "datasource": {
+        "type": "tempo",
+        "uid": "${DS_TEMPO}"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 13
+      },
+      "id": 25,
+      "options": {
+        "edges": {},
+        "layoutAlgorithm": "layered",
+        "nodes": {
+          "arcs": []
+        },
+        "zoomMode": "cooperative"
+      },
+      "pluginVersion": "12.1.0-90058",
+      "targets": [
+        {
+          "datasource": {
+            "type": "tempo",
+            "uid": "${DS_GRAFANACLOUD-DEMOINFRA-TRACES}"
+          },
+          "filters": [
+            {
+              "id": "8de6ae50",
+              "operator": "=",
+              "scope": "span"
+            }
+          ],
+          "limit": 20,
+          "queryType": "serviceMap",
+          "refId": "A",
+          "serviceMapQuery": "{}"
+        }
+      ],
+      "title": "Upstream (TokenGenerator)",
+      "type": "nodeGraph"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 41,
+  "tags": [
+    "obsessions"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {},
+        "hide": 2,
+        "includeAll": false,
+        "name": "DS_PROMETHEUS",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "/demoinfra/",
+        "type": "datasource"
+      },
+      {
+        "current": {},
+        "hide": 2,
+        "includeAll": false,
+        "name": "DS_TEMPO",
+        "options": [],
+        "query": "tempo",
+        "refresh": 1,
+        "regex": "/demoinfra/",
+        "type": "datasource"
+      },
+      {
+        "current": {},
+        "hide": 2,
+        "includeAll": false,
+        "name": "DS_LOKI",
+        "options": [],
+        "query": "loki",
+        "refresh": 1,
+        "regex": "/demoinfra-logs/",
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "text": "AuthService",
+          "value": "AuthService"
+        },
+        "includeAll": false,
+        "label": "Apps",
+        "name": "service_name",
+        "options": [
+          {
+            "selected": true,
+            "text": "AuthService",
+            "value": "AuthService"
+          },
+          {
+            "selected": false,
+            "text": "SessionManager",
+            "value": "SessionManager"
+          },
+          {
+            "selected": false,
+            "text": "TokenGenerator",
+            "value": "TokenGenerator"
+          },
+          {
+            "selected": false,
+            "text": "TokenVerify",
+            "value": "TokenVerify"
+          }
+        ],
+        "query": "AuthService, SessionManager, TokenGenerator, TokenVerify",
+        "type": "custom"
+      },
+      {
+        "current": {
+          "text": "Login",
+          "value": "Login"
+        },
+        "description": "",
+        "includeAll": false,
+        "label": "Service",
+        "name": "service_namespace",
+        "options": [
+          {
+            "selected": false,
+            "text": "Accounts",
+            "value": "Accounts"
+          },
+          {
+            "selected": false,
+            "text": "Cards",
+            "value": "Cards"
+          },
+          {
+            "selected": false,
+            "text": "Investments",
+            "value": "Investments"
+          },
+          {
+            "selected": true,
+            "text": "Login",
+            "value": "Login"
+          },
+          {
+            "selected": false,
+            "text": "Payments",
+            "value": "Payments"
+          },
+          {
+            "selected": false,
+            "text": "Transactions",
+            "value": "Transactions"
+          },
+          {
+            "selected": false,
+            "text": "Transfers",
+            "value": "Transfers"
+          }
+        ],
+        "query": "Accounts, Cards, Investments, Login, Payments, Transactions, Transfers",
+        "type": "custom"
+      },
+      {
+        "current": {
+          "text": "Production",
+          "value": "Production"
+        },
+        "label": "Environment",
+        "name": "env",
+        "options": [
+          {
+            "selected": false,
+            "text": "Development",
+            "value": "Development"
+          },
+          {
+            "selected": false,
+            "text": "Staging",
+            "value": "Staging"
+          },
+          {
+            "selected": true,
+            "text": "Production",
+            "value": "Production"
+          }
+        ],
+        "query": "Development, Staging, Production",
+        "type": "custom"
+      },
+      {
+        "current": {
+          "text": "0.95",
+          "value": "0.95"
+        },
+        "label": "Quantile",
+        "name": "quant",
+        "options": [
+          {
+            "selected": false,
+            "text": "0.50",
+            "value": "0.50"
+          },
+          {
+            "selected": false,
+            "text": "0.90",
+            "value": "0.90"
+          },
+          {
+            "selected": true,
+            "text": "0.95",
+            "value": "0.95"
+          },
+          {
+            "selected": false,
+            "text": "0.97",
+            "value": "0.97"
+          },
+          {
+            "selected": false,
+            "text": "0.99",
+            "value": "0.99"
+          }
+        ],
+        "query": "0.50, 0.90, 0.95, 0.97, 0.99",
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-3h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "Europe/London",
+  "title": "Service Graph",
+  "uid": "cefgdjx1733lsc",
+  "version": 21,
+  "weekStart": ""
+}
